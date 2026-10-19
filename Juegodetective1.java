@@ -26,13 +26,13 @@ public class Juegodetective1 {
             int usadas = 0;
             boolean acusar = false;
 
-            System.out.println("\n" + Historias.historias[n]);
+            System.out.println(" " + Historias.historias[n]);
             System.out.println("Nadie te dira a quien descartar: tu debes deducirlo.");
-            System.out.println("Mientras menos pistas uses, mas puntos ganas.\n");
+            System.out.println("Mientras menos pistas uses, mas puntos ganas. ");
             Pantalla.mostrarSospechosos(n);
 
             while (usadas < np && !acusar) {
-                System.out.println("\nQue quieres hacer?");
+                System.out.println("Que quieres hacer?");
                 for (int i = 0; i < np; i++) {
                     if (!usada[i]) System.out.println((i + 1) + ". " + Pistas.rasgo(n, i, 0));
                 }
@@ -47,29 +47,29 @@ public class Juegodetective1 {
                     usada[op - 1] = true;
                     halladas[usadas++] = Pistas.rasgo(n, op - 1, Personajes.tiene(n, culpable, op - 1) ? 4 : 3);
 
-                    System.out.println("\nPISTA: " + halladas[usadas - 1] + "\n\nPISTAS ENCONTRADAS:");
+                    System.out.println(" PISTA: " + halladas[usadas - 1] + "  PISTAS ENCONTRADAS:");
                     for (int i = 0; i < usadas; i++) System.out.println("- " + halladas[i]);
                     System.out.println();
                     Pantalla.mostrarSospechosos(n);
                 }
             }
 
-            System.out.println("\nEs hora de acusar!");
+            System.out.println(" Es hora de acusar!");
             int acusado = Entrada.leerNumero(sc, "Quien es el culpable (1-" + cantidad + ")? ", 1, cantidad) - 1;
 
             if (acusado == culpable) {
                 int puntos = (np + 1 - usadas) * (n + 1);
                 total += puntos;
-                System.out.println("\nCASO RESUELTO! " + Personajes.nombre(n, culpable) + " era el culpable. +" + puntos + " puntos");
+                System.out.println(" CASO RESUELTO! " + Personajes.nombre(n, culpable) + " era el culpable. +" + puntos + " puntos");
                 System.out.println(Historias.finales[n]);
             } else {
-                System.out.println("\nTe equivocaste... el culpable era " + Personajes.nombre(n, culpable) + " y escapo.");
+                System.out.println(" Te equivocaste... el culpable era " + Personajes.nombre(n, culpable) + " y escapo.");
             }
             System.out.println("Puntos totales: " + total);
 
-            System.out.print("\nJugar otro caso? (s/n): ");
+            System.out.print(" Jugar otro caso? (si/no): ");
             otra = sc.nextLine().trim();
-        } while (otra.equalsIgnoreCase("s"));
+        } while (otra.equalsIgnoreCase("si"));
 
         System.out.println("\nGracias por jugar, detective!");
         sc.close();

@@ -25,7 +25,7 @@ public class Pistas {
          "Analizar el aire del pasillo;sin perfume;con perfume;El aire esta limpio, sin ningun aroma.;Queda un aroma dulce flotando en el pasillo.",
          "Revisar la camara de maquinas;pelo corto;pelo largo;La sombra tiene la cabeza redonda, sin nada que cuelgue.;La sombra tiene algo largo que se mueve al caminar, como una cola."}};
 
-    public static String rasgo(int n, int r, int k) {
-        return Texto.campo(pistas[n][r], ';', k);
+    public static String rasgo(int nivel, int pista, int campo) {
+        return Texto.campo(pistas[nivel][pista], ';', campo);
     }
 }

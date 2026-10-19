@@ -15,11 +15,11 @@ public class Personajes {
          "Medico Sirio:10001", "Cadete Vega:01010", "Cocinero Lobo:11100", "Navegante Kira:00001",
          "Comandante Axel:10101", "Biologa Nina:01110"}};
 
-    public static String nombre(int n, int s) {
-        return Texto.campo(sospechosos[n][s], ':', 0);
+    public static String nombre(int nivel, int sospechoso) {
+        return Texto.campo(sospechosos[nivel][sospechoso], ':', 0);
     }
 
-    public static boolean tiene(int n, int s, int r) {
-        return Texto.campo(sospechosos[n][s], ':', 1).charAt(r) == '1';
+    public static boolean tiene(int nivel, int sospechoso, int pista) {
+        return Texto.campo(sospechosos[nivel][sospechoso], ':', 1).charAt(pista) == '1';
     }
 }

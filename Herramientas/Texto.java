@@ -2,13 +2,14 @@ package Herramientas;
 
 public class Texto {
 
-    // Devuelve el campo numero k (empezando en 0) de un texto separado por 'sep'.
-    public static String campo(String texto, char sep, int k) {
+    // Devuelve el campo numero numeroCampo (empezando en 0) de un texto separado por 'separador'.
+    
+    public static String campo(String texto, char separador, int numeroCampo) {
         int inicio = 0;
-        for (int i = 0; i < k; i++) {
-            inicio = texto.indexOf(sep, inicio) + 1;
+        for (int contador = 0; contador < numeroCampo; contador++) {
+            inicio = texto.indexOf(separador, inicio) + 1;
         }
-        int fin = texto.indexOf(sep, inicio);
+        int fin = texto.indexOf(separador, inicio);
         if (fin == -1) fin = texto.length();
         return texto.substring(inicio, fin);
     }

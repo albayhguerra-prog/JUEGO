@@ -8,25 +8,26 @@ import Herramientas.Entrada;
 
 public class Pantalla {
 
-    public static void mostrarSospechosos(int n) {
+    public static void mostrarSospechosos(int nivel) {
         System.out.println("SOSPECHOSOS:");
-        for (int s = 0; s < Personajes.sospechosos[n].length; s++) {
-            String texto = (s + 1) + ". " + Personajes.nombre(n, s) + " - ";
-            for (int r = 0; r < Pistas.pistas[n].length; r++) {
-                texto += Pistas.rasgo(n, r, Personajes.tiene(n, s, r) ? 2 : 1)
-                        + (r < Pistas.pistas[n].length - 1 ? ", " : "");
+        for (int sospechoso = 0; sospechoso < Personajes.sospechosos[nivel].length; sospechoso++) {
+            String linea = (sospechoso + 1) + ". " + Personajes.nombre(nivel, sospechoso) + " - ";
+            for (int pista = 0; pista < Pistas.pistas[nivel].length; pista++) {
+                linea += Pistas.rasgo(nivel, pista, Personajes.tiene(nivel, sospechoso, pista) ? 2 : 1)
+                        + (pista < Pistas.pistas[nivel].length - 1 ? ", " : "");
             }
-            System.out.println(texto);
+            System.out.println(linea);
         }
     }
 
-    public static int elegirNivel(Scanner sc) {
-        System.out.println("\nElige el caso:");
-        for (int i = 0; i < Historias.titulos.length; i++) {
-            System.out.println((i + 1) + ". " + Historias.titulos[i] + " (" + Personajes.sospechosos[i].length
-                    + " sospechosos, " + Pistas.pistas[i].length + " pistas"
-                    + (i >= 2 ? ", pistas dificiles" : "") + ")");
+    public static int elegirNivel(Scanner teclado) {
+        System.out.println();
+        System.out.println("Elige el caso:");
+        for (int nivel = 0; nivel < Historias.titulos.length; nivel++) {
+            System.out.println((nivel + 1) + ". " + Historias.titulos[nivel] + " (" + Personajes.sospechosos[nivel].length
+                    + " sospechosos, " + Pistas.pistas[nivel].length + " pistas"
+                    + (nivel >= 2 ? ", pistas dificiles" : "") + ")");
         }
-        return Entrada.leerNumero(sc, "> ", 1, Historias.titulos.length) - 1;
+        return Entrada.leerNumero(teclado, "> ", 1, Historias.titulos.length) - 1;
     }
 }
